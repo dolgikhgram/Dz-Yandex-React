@@ -7,14 +7,16 @@ import { Route, Routes } from 'react-router-dom';
 
 const App = () => {
   return (
-    <div>
+    <div className='app'>
       <Header />
-      <Routes>
-        <Route path='/' element={<Analytics />} />
-        <Route path='/analytics' element={<Analytics />} />
-        <Route path='/generator' element={<Generator />} />
-        <Route path='/history' element={<History />} />
-      </Routes>
+      <main className='main-content'>
+        <Routes>
+          <Route path='/' element={<Analytics />} />
+          <Route path='/analytics' element={<Analytics />} />
+          <Route path='/generator' element={<Generator />} />
+          <Route path='/history' element={<History />} />
+        </Routes>
+      </main>
     </div>
   );
 };

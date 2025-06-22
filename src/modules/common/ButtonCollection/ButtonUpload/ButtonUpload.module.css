@@ -3,98 +3,129 @@
   justify-content: center;
   align-items: center;
   flex-direction: row;
-  gap: 10px;
+  gap: 1vw;
+  width: 100%;
 }
 
 .pendingBtn {
-  min-width: 361px;
-  height: 70px;
-  gap: 10px;
-  border-radius: 10px;
+  min-width: 20vw;
+  max-width: 30vw;
+  min-height: 7vh;
+  max-height: 10vh;
+  gap: 1vh;
+  border-radius: 1vw;
   background: rgba(255, 255, 255, 1);
   border: none;
   cursor: pointer;
-  padding: 15px 27px;
+  padding: 1vh 2vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
 .uploadedBtn {
-  min-width: 331px;
-  height: 70px;
-  border-radius: 10px;
+  min-width: 18vw;
+  max-width: 28vw;
+  min-height: 7vh;
+  max-height: 10vh;
+  border-radius: 1vw;
   border: none;
-  gap: 10px;
+  gap: 1vh;
   background: rgba(203, 129, 255, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1vh 2vw;
 }
+
 .doneBtn {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-width: 144px;
-  min-height: 70px;
-  border-radius: 10px;
-  gap: 10px;
+  min-width: 8vw;
+  max-width: 15vw;
+  min-height: 7vh;
+  max-height: 10vh;
+  border-radius: 1vw;
+  gap: 1vh;
   background: rgba(212, 250, 230, 1);
   cursor: pointer;
   border: none;
+  padding: 1vh 2vw;
 }
+
 .processBtn {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-width: 144px;
-  min-height: 70px;
-  border-radius: 10px;
-  gap: 10px;
+  min-width: 8vw;
+  max-width: 15vw;
+  min-height: 7vh;
+  max-height: 10vh;
+  border-radius: 1vw;
+  gap: 1vh;
   background: rgba(203, 129, 255, 1);
   cursor: pointer;
   border: none;
+  padding: 1vh 2vw;
 }
+
 .errorBtn {
-  min-width: 184px;
-  min-height: 70px;
-  border-radius: 10px;
-  gap: 10px;
+  min-width: 10vw;
+  max-width: 18vw;
+  min-height: 7vh;
+  max-height: 10vh;
+  border-radius: 1vw;
+  gap: 1vh;
   border: none;
   background: rgba(255, 95, 0, 1);
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1vh 2vw;
 }
+
 .pendingText {
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: Roboto, sans-serif;
   font-weight: 400;
-  font-size: 35px;
-  line-height: 110.00000000000001%;
+  font-size: clamp(1.5rem, 2vw, 2.5rem);
+  line-height: 1.1;
   text-align: center;
-  padding-left: 27px;
-  padding-right: 27px;
+  padding: 1vh 2vw;
 }
+
 .errorText {
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: Roboto, sans-serif;
   font-weight: 400;
-  font-size: 35px;
-  line-height: 110.00000000000001%;
+  font-size: clamp(1.5rem, 2vw, 2.5rem);
+  line-height: 1.1;
   text-align: center;
   color: rgba(255, 255, 255, 1);
 }
+
 .textSecondary {
   font-family: Roboto, sans-serif;
   font-weight: 400;
-  font-size: 35px;
-  line-height: 110.00000000000001%;
+  font-size: clamp(1.5rem, 2vw, 2.5rem);
+  line-height: 1.1;
   text-align: center;
-  margin-top: 10px;
+  margin-top: 1vh;
 }
+
 .textErrorSecondary {
   font-family: Roboto, sans-serif;
   font-weight: 400;
-  font-size: 35px;
-  line-height: 110.00000000000001%;
+  font-size: clamp(1.5rem, 2vw, 2.5rem);
+  line-height: 1.1;
   text-align: center;
-  margin-top: 10px;
+  margin-top: 1vh;
   color: rgba(255, 95, 0, 1);
 }
 
@@ -102,23 +133,25 @@
   position: relative;
   font-family: Roboto, sans-serif;
   font-weight: 400;
-  font-size: 35px;
-  line-height: 110.00000000000001%;
+  font-size: clamp(1.5rem, 2vw, 2.5rem);
+  line-height: 1.1;
   text-align: center;
-  margin-top: 10px;
-  right: 30px;
+  margin-top: 1vh;
+  right: 2vw;
 }
+
 .loaderSpin {
   animation: spin 2s linear infinite;
   will-change: transform;
   transform-origin: 50% 45.45%;
   display: block;
 }
+
 .x {
-  width: 70px;
-  height: 70px;
-  border-radius: 10px;
-  padding: 8px;
+  width: 7vh;
+  height: 7vh;
+  border-radius: 1vw;
+  padding: 0.8vh;
   background: rgba(32, 27, 16, 1);
   border: none;
   cursor: pointer;

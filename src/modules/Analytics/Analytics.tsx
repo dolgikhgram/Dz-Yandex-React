@@ -19,6 +19,7 @@ type AnalyticsResults = {
   less_spent_at?: number;
   big_spent_at?: number;
 };
+
 const Analytics = () => {
   const { add } = useStore();
   const [drag, setDrag] = useState(false);
@@ -28,6 +29,7 @@ const Analytics = () => {
     'pending' | 'uploaded' | 'parsing' | 'process' | 'done' | 'error'
   >('pending');
   const [results, setResults] = useState<AnalyticsResults>({});
+
   const backgroundClass = classNames(
     statusBtn === 'pending'
       ? `${style.uploaderField}`
@@ -41,6 +43,7 @@ const Analytics = () => {
               ? `${style.uploaderFieldErorr}`
               : ''
   );
+
   const handleFileChange = (
     e: ChangeEvent<HTMLInputElement> | React.DragEvent<HTMLDivElement>
   ) => {
@@ -50,39 +53,15 @@ const Analytics = () => {
       e.target.files != null
     ) {
       const selectedFile = e.target.files[0];
-      const timestamp = new Date().toISOString();
-
+      
       // Устанавливаем название файла до проверки формата
       setFileName(selectedFile.name);
+      
       // Проверяем формат файла
       const fileExtension = selectedFile.name.split('.').pop()?.toLowerCase();
       if (fileExtension !== 'csv') {
         setStatusBtn('error');
         return;
-      }
-
-      if (!localStorage.getItem(key)) {
-        localStorage.setItem(
-          key,
-          JSON.stringify({
-            [timestamp]: {
-              name: selectedFile.name,
-              date: new Date().toLocaleDateString('ru-RU'),
-              processed: false,
-            },
-          })
-        );
-      } else {
-        const storedData = localStorage.getItem(key);
-        if (storedData) {
-          const obj = JSON.parse(storedData);
-          obj[timestamp] = {
-            name: selectedFile.name,
-            date: new Date().toLocaleDateString('ru-RU'),
-            processed: false,
-          };
-          localStorage.setItem(key, JSON.stringify(obj));
-        }
       }
 
       console.log(selectedFile);
@@ -91,42 +70,21 @@ const Analytics = () => {
       reader.readAsText(selectedFile);
       setStatusBtn('process');
     }
+    
     // Проверяем, является ли это событием drag (файл перетащен)
     if ('dataTransfer' in e && e.dataTransfer.files != null) {
       const selectedFile = e.dataTransfer.files[0];
-      const timestamp = new Date().toISOString();
-
+      
       // Устанавливаем название файла до проверки формата
       setFileName(selectedFile.name);
+      
       // Проверяем формат файла
       const fileExtension = selectedFile.name.split('.').pop()?.toLowerCase();
       if (fileExtension !== 'csv') {
         setStatusBtn('error');
         return;
       }
-      if (!localStorage.getItem(key)) {
-        localStorage.setItem(
-          key,
-          JSON.stringify({
-            [timestamp]: {
-              name: selectedFile.name,
-              date: new Date().toLocaleDateString('ru-RU'),
-              processed: false,
-            },
-          })
-        );
-      } else {
-        const storedData = localStorage.getItem(key);
-        if (storedData) {
-          const obj = JSON.parse(storedData);
-          obj[timestamp] = {
-            name: selectedFile.name,
-            date: new Date().toLocaleDateString('ru-RU'),
-            processed: false,
-          };
-          localStorage.setItem(key, JSON.stringify(obj));
-        }
-      }
+
       console.log(selectedFile);
       setFile(selectedFile);
       const reader = new FileReader();
@@ -134,11 +92,41 @@ const Analytics = () => {
       setStatusBtn('process');
     }
   };
+
   const handleSend = async () => {
     if (!file) return;
+
+    // Сохраняем файл в localStorage только при отправке
+    const timestamp = new Date().toISOString();
+    
+    if (!localStorage.getItem(key)) {
+      localStorage.setItem(
+        key,
+        JSON.stringify({
+          [timestamp]: {
+            name: fileName,
+            date: new Date().toLocaleDateString('ru-RU'),
+            processed: false,
+          },
+        })
+      );
+    } else {
+      const storedData = localStorage.getItem(key);
+      if (storedData) {
+        const obj = JSON.parse(storedData);
+        obj[timestamp] = {
+          name: fileName,
+          date: new Date().toLocaleDateString('ru-RU'),
+          processed: false,
+        };
+        localStorage.setItem(key, JSON.stringify(obj));
+      }
+    }
+
     const formData = new FormData();
     formData.append('file', file);
     setStatusBtn('uploaded');
+    
     try {
       console.log('запрос отправлен');
       const response = await fetch(
@@ -183,10 +171,8 @@ const Analytics = () => {
           }
         })
         .filter(obj => obj !== null);
-
-      setResults(objects[objects.length - 1]);
       setStatusBtn('done');
-      const timestamp = new Date().toISOString();
+      setResults(objects[objects.length - 1]);
 
       // Обновляем запись в localStorage с аналитическими данными
       const storedData = localStorage.getItem(key);
@@ -212,6 +198,7 @@ const Analytics = () => {
         localStorage.setItem(key, JSON.stringify(obj));
       }
 
+      // Добавляем в store только после успешной обработки
       add(timestamp, {
         rows_affected: objects[objects.length - 1]['rows_affected'] || 0,
         total_spend_galactic:
@@ -224,57 +211,49 @@ const Analytics = () => {
         less_spent_at: objects[objects.length - 1]['less_spent_at'] || 0,
         big_spent_at: objects[objects.length - 1]['big_spent_at'] || 0,
       });
-      // console.log(tableData)
-      // console.log(results);
-      // console.log('Массив объектов:', objects);
+      
     } catch (error) {
       setStatusBtn('error');
-      const timestamp = new Date().toISOString();
-      if (!localStorage.getItem(key)) {
-        localStorage.setItem(
-          key,
-          JSON.stringify({
-            [timestamp]: {
-              name: fileName,
-              date: new Date().toLocaleDateString('ru-RU'),
-              processed: false,
-            },
-          })
-        );
-      } else {
-        const storedData = localStorage.getItem(key);
-        if (storedData) {
-          const obj = JSON.parse(storedData);
-          obj[timestamp] = {
-            name: fileName,
-            date: new Date().toLocaleDateString('ru-RU'),
-            processed: false,
-          };
-          localStorage.setItem(key, JSON.stringify(obj));
-        }
+      
+      // Обновляем запись в localStorage как неуспешную
+      const storedData = localStorage.getItem(key);
+      if (storedData) {
+        const obj = JSON.parse(storedData);
+        obj[timestamp] = {
+          name: fileName,
+          date: new Date().toLocaleDateString('ru-RU'),
+          processed: false,
+        };
+        localStorage.setItem(key, JSON.stringify(obj));
       }
+      
       console.error('Ошибка отправки:', error);
     }
   };
+
   const rest = () => {
     setFile(null);
     setFileName('');
     setStatusBtn('pending');
   };
+
   const dragStartHandler = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     setDrag(true);
   };
+
   const dragLeaveHandler = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     setDrag(false);
   };
+
   const onDropHandler = (e: React.DragEvent<HTMLDivElement>) => {
     console.log(e.dataTransfer.files);
     handleFileChange(e);
     e.preventDefault();
     setDrag(false);
   };
+
   return (
     <div className={style.container}>
       <AnalyticsTitle />
@@ -375,6 +354,7 @@ const Analytics = () => {
               }
               less_spent_at={results['less_spent_at'] || 0}
               big_spent_at={results['big_spent_at'] || 0}
+              type={'row'}
             />
           ))}
       </div>

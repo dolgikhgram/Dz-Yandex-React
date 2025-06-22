@@ -3,49 +3,66 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin-left: 40px;
-  margin-right: 40px;
-  margin-top: 40px;
+  padding: 2vh 3vw;
+  width: 100%;
+  min-height: 10vh;
+  box-sizing: border-box;
 }
 .logosContainer {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
-  gap: 40px;
+  justify-content: flex-start;
+  gap: 2vw;
+  flex: 1;
 }
 .summerSchools {
-  width: 259px;
-  height: 53px;
+  width: 15vw;
+  height: auto;
+  max-width: 259px;
+  min-width: 200px;
 }
 .intergalacticAnalytics {
-  width: 511px;
-  height: 27px;
+  width: 25vw;
+  height: auto;
+  max-width: 511px;
+  min-width: 300px;
 }
 .btnContainer {
-  max-width: 784px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 20px;
+  gap: 1vw;
+  flex: 1;
+  justify-content: flex-end;
 }
 
 .btn {
   border: none;
   background-color: transparent;
-  width: 251px;
-  height: 35px;
+  padding: 1vh 1.5vw;
   cursor: pointer;
+  font-size: 1.2vh;
+  min-width: 8vw;
+  max-width: 15vw;
+  height: auto;
+  min-height: 35px;
 }
 .analysticsBtn {
-  width: 271px;
-  height: 61px;
+  min-width: 10vw;
+  max-width: 20vw;
+  height: auto;
+  min-height: 61px;
 }
 .generatorBtn {
-  width: 283px;
-  height: 61px;
+  min-width: 10vw;
+  max-width: 20vw;
+  height: auto;
+  min-height: 61px;
 }
 .historyBtn {
-  width: 190px;
-  height: 61px;
+  min-width: 8vw;
+  max-width: 15vw;
+  height: auto;
+  min-height: 61px;
 }

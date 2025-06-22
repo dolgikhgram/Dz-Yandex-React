@@ -1,71 +1,94 @@
 .rowHistoryContainer {
   display: flex;
   flex-direction: row;
-  gap: 40px;
-  margin-top: 10px;
+  gap: 3vw;
+  margin-top: 1vh;
+  width: 100%;
+  align-items: center;
 }
 .activeRowHistory {
   display: flex;
   flex-direction: row;
   align-items: center;
-  min-width: 1713px;
-  min-height: 92px;
+  gap: 3vw;
+  min-height: 10vh;
+  max-height: 12vh;
   justify-content: space-between;
-  border-radius: 40px;
-  padding-right: 50px;
-  padding-left: 50px;
+  border-radius: 3vw;
+  padding: 2vh 3vw;
   background: rgba(203, 129, 255, 1);
   cursor: pointer;
+  flex: 1;
+  box-sizing: border-box;
 }
 .unActiveRowHistory {
   display: flex;
   flex-direction: row;
   align-items: center;
-  min-width: 1713px;
-  min-height: 92px;
+  gap: 3vw;
+  min-height: 10vh;
+  max-height: 12vh;
   justify-content: space-between;
-  border-radius: 40px;
-  padding-right: 50px;
-  padding-left: 50px;
+  border-radius: 3vw;
+  padding: 2vh 3vw;
   background: rgba(203, 129, 255, 1);
+  flex: 1;
+  box-sizing: border-box;
 }
 .fileContainer {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 5px;
+  gap: 0.5vw;
+  min-width: 20vw;
+  max-width: 30vw;
 }
 .fileText {
+  width: 100%;
   font-family: Roboto, sans-serif;
   font-weight: 400;
-  font-size: 30px;
-  line-height: 100%;
+  font-size: clamp(1.2rem, 1.8vw, 2rem);
+  line-height: 1.1;
   color: rgba(32, 27, 16, 1);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .data {
   font-family: Roboto, sans-serif;
   font-weight: 400;
-  font-size: 30px;
-  line-height: 100%;
+  font-size: clamp(1.2rem, 1.8vw, 2rem);
+  line-height: 1.1;
   color: rgba(32, 27, 16, 1);
+  min-width: 12vw;
+  max-width: 18vw;
+  text-align: center;
 }
 .handlerContainer {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 9px;
+  gap: 1vw;
+  min-width: 20vw;
+  max-width: 25vw;
 }
 .unHandlerContainer {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 9px;
+  gap: 1vw;
   opacity: 50%;
+  min-width: 20vw;
+  max-width: 25vw;
 }
 .handlerText {
+  width: 100%;
   font-family: Roboto, sans-serif;
   font-weight: 400;
-  font-size: 30px;
-  line-height: 100%;
+  font-size: clamp(1rem, 1.5vw, 1.8rem);
+  line-height: 1.1;
   color: rgba(32, 27, 16, 1);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

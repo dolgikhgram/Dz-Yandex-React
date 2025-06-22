@@ -14,25 +14,33 @@
 .modalContent {
   position: relative;
   background: white;
-  width: 1000px;
-  height: 1111px;
-  border-radius: 45px;
-  gap: 20px;
-  padding: 40px;
+  width: 90vw;
+  max-width: 80vw;
+  height: 90vh;
+  max-height: 80vh;
+  border-radius: 3vw;
+  gap: 2vh;
+  padding: 3vh 3vw;
   overflow: auto;
+  box-sizing: border-box;
 }
 
 .closeButton {
-  position: relative;
-  top: -590px;
-  right: -1160px;
+  position: absolute;
+  top: 2vh;
+  right: 2vw;
   z-index: 9;
-  width: 70px;
-  height: 70px;
-  border-radius: 10px;
-  gap: 20px;
-  padding: 8px;
+  width: 7vh;
+  height: 7vh;
+  min-width: 50px;
+  min-height: 50px;
+  border-radius: 1vw;
+  gap: 2vh;
+  padding: 0.8vh;
   background: rgba(32, 27, 16, 1);
   border: none;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

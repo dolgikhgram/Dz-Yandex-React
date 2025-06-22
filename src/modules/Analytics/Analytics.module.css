@@ -2,33 +2,40 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 80px;
-  margin-left: 40px;
-  margin-right: 40px;
+  padding: 5vh 3vw;
+  width: 100%;
+  min-height: 90vh;
+  box-sizing: border-box;
 }
 .uploaderField {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 2vh;
   width: 100%;
-  height: 239px;
-  gap: 10px;
-  border-radius: 40px;
+  max-width: 80vw;
+  min-height: 25vh;
+  max-height: 30vh;
+  gap: 1vh;
+  border-radius: 2vw;
   background: rgba(234, 205, 255, 1);
+  padding: 2vh 2vw;
 }
 .uploaderFieldTrue {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 2vh;
   width: 100%;
-  height: 239px;
-  gap: 10px;
-  border-radius: 40px;
+  max-width: 80vw;
+  min-height: 25vh;
+  max-height: 30vh;
+  gap: 1vh;
+  border-radius: 2vw;
   background: rgba(212, 250, 230, 1);
+  padding: 2vh 2vw;
 }
 
 .uploaderFieldDone {
@@ -36,54 +43,70 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 2vh;
   width: 100%;
-  height: 239px;
-  gap: 10px;
-  border-radius: 40px;
+  max-width: 80vw;
+  min-height: 25vh;
+  max-height: 30vh;
+  gap: 1vh;
+  border-radius: 2vw;
   border: 1px solid rgba(32, 27, 16, 1);
+  padding: 2vh 2vw;
 }
 .uploaderFieldErorr {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 2vh;
   width: 100%;
-  height: 239px;
-  gap: 10px;
-  border-radius: 40px;
+  max-width: 80vw;
+  min-height: 25vh;
+  max-height: 30vh;
+  gap: 1vh;
+  border-radius: 2vw;
   border: 1px solid rgba(255, 95, 0, 1);
+  padding: 2vh 2vw;
 }
 
 .uploadContainer {
   position: relative;
   display: inline-block;
+  width: 100%;
+  height: 100%;
 }
 .btnContainer {
-  margin-top: 20px;
+  margin-top: 2vh;
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 .contentContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 859px;
+  min-height: 60vh;
+  width: 100%;
+  padding: 2vh 2vw;
 }
 .contentTextContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  max-width: 80vw;
 }
 .secondaryText {
   font-family: Roboto, sans-serif;
   font-weight: 400;
-  font-size: 40px;
-  line-height: 110.00000000000001%;
+  font-size: clamp(2rem, 3vw, 4rem);
+  line-height: 1.1;
   text-align: center;
   vertical-align: middle;
   color: rgba(203, 129, 255, 1);
+  margin: 1vh 0;
 }
 .input {
   position: absolute;
