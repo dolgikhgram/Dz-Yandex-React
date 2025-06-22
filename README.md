@@ -1,5 +1,5 @@
 Инструкция по запуску: 
-1. Клонирование репозитория (git clone <URL-репозитория>)
+1. Клонирование репозитория (git clone https://github.com/dolgikhgram/Dz-Yandex-React)
 2. Установка зависимостей (npm install)
 3.  Запуск (npm run dev)
 
