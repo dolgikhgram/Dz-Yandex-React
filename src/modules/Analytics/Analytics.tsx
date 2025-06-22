@@ -167,6 +167,7 @@ const Analytics = () => {
         })
         .filter(obj => obj !== null);
       setStatusBtn('done');
+      setDrag(false)
       setResults(objects[objects.length - 1]);
 
       const storedData = localStorage.getItem(key);
@@ -248,7 +249,7 @@ const Analytics = () => {
     <div className={style.container}>
       <AnalyticsTitle />
       <div
-        className={backgroundClass}
+        className={!drag ? backgroundClass : style.uploaderFieldTrue}
         onDragStart={e => dragStartHandler(e)}
         onDragLeave={e => dragLeaveHandler(e)}
         onDragOver={e => dragStartHandler(e)}
