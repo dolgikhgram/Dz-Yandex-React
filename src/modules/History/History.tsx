@@ -72,7 +72,7 @@ const History = () => {
         );
       })}
       <div className={style.btnContainer}>
-        <Link to={'/generator'}>
+        <Link to={'/generator'} className={style.link}>
           <Button type={'download'}>Сгенерировать больше</Button>
         </Link>
         {arrKey.length > 0 && (
