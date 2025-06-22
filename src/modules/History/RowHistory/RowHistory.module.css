@@ -1,0 +1,71 @@
+.rowHistoryContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  margin-top: 10px;
+}
+.activeRowHistory {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  min-width: 1713px;
+  min-height: 92px;
+  justify-content: space-between;
+  border-radius: 40px;
+  padding-right: 50px;
+  padding-left: 50px;
+  background: rgba(203, 129, 255, 1);
+  cursor: pointer;
+}
+.unActiveRowHistory {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  min-width: 1713px;
+  min-height: 92px;
+  justify-content: space-between;
+  border-radius: 40px;
+  padding-right: 50px;
+  padding-left: 50px;
+  background: rgba(203, 129, 255, 1);
+}
+.fileContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+}
+.fileText {
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 100%;
+  color: rgba(32, 27, 16, 1);
+}
+.data {
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 100%;
+  color: rgba(32, 27, 16, 1);
+}
+.handlerContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 9px;
+}
+.unHandlerContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 9px;
+  opacity: 50%;
+}
+.handlerText {
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 100%;
+  color: rgba(32, 27, 16, 1);
+}

@@ -1,0 +1,20 @@
+.mainTextContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 0.45rem;
+}
+.defaultText {
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 110.00000000000001%;
+  text-align: center;
+}
+.spanText {
+  font-family: Roboto, sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 110.00000000000001%;
+  text-align: center;
+}
