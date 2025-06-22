@@ -1,5 +1,5 @@
 Инструкция по запуску: 
-1. Клонирование репозитория (git clone https://github.com/dolgikhgram/Dz-Yandex-React)
+1. Клонирование репозитория (git clone https://github.com/dolgikhgram/Dz-Yandex-React>)
 2. Установка зависимостей (npm install)
 3.  Запуск (npm run dev)
 
@@ -11,8 +11,8 @@
 Analytics - аналитическое поле
 Generator - генератор данных
 History - история операций
-Portal - портальный интерфейс
 Общие компоненты (common):
+Portal - портальный интерфейс
 ButtonCollection - коллекция кнопок
 Basket - корзина
 ButtonUpload - кнопка загрузки
