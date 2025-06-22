@@ -37,11 +37,13 @@ const Analytics = () => {
         ? `${style.uploaderFieldTrue}`
         : statusBtn === 'uploaded'
           ? `${style.uploaderFieldTrue}`
-          : statusBtn === 'done'
-            ? `${style.uploaderFieldDone}`
-            : statusBtn === 'error'
-              ? `${style.uploaderFieldErorr}`
-              : ''
+          : statusBtn === 'parsing'
+            ? `${style.uploaderFieldTrue}`
+            : statusBtn === 'done'
+              ? `${style.uploaderFieldDone}`
+              : statusBtn === 'error'
+                ? `${style.uploaderFieldError}`
+                : `${style.uploaderField}`
   );
 
   const handleFileChange = (
@@ -53,11 +55,9 @@ const Analytics = () => {
       e.target.files != null
     ) {
       const selectedFile = e.target.files[0];
-      
-      // Устанавливаем название файла до проверки формата
+
       setFileName(selectedFile.name);
-      
-      // Проверяем формат файла
+
       const fileExtension = selectedFile.name.split('.').pop()?.toLowerCase();
       if (fileExtension !== 'csv') {
         setStatusBtn('error');
@@ -70,22 +70,18 @@ const Analytics = () => {
       reader.readAsText(selectedFile);
       setStatusBtn('process');
     }
-    
-    // Проверяем, является ли это событием drag (файл перетащен)
+
     if ('dataTransfer' in e && e.dataTransfer.files != null) {
       const selectedFile = e.dataTransfer.files[0];
-      
-      // Устанавливаем название файла до проверки формата
+
       setFileName(selectedFile.name);
-      
-      // Проверяем формат файла
+
       const fileExtension = selectedFile.name.split('.').pop()?.toLowerCase();
       if (fileExtension !== 'csv') {
         setStatusBtn('error');
         return;
       }
 
-      console.log(selectedFile);
       setFile(selectedFile);
       const reader = new FileReader();
       reader.readAsText(selectedFile);
@@ -96,9 +92,8 @@ const Analytics = () => {
   const handleSend = async () => {
     if (!file) return;
 
-    // Сохраняем файл в localStorage только при отправке
     const timestamp = new Date().toISOString();
-    
+
     if (!localStorage.getItem(key)) {
       localStorage.setItem(
         key,
@@ -126,7 +121,7 @@ const Analytics = () => {
     const formData = new FormData();
     formData.append('file', file);
     setStatusBtn('uploaded');
-    
+
     try {
       console.log('запрос отправлен');
       const response = await fetch(
@@ -174,7 +169,6 @@ const Analytics = () => {
       setStatusBtn('done');
       setResults(objects[objects.length - 1]);
 
-      // Обновляем запись в localStorage с аналитическими данными
       const storedData = localStorage.getItem(key);
       if (storedData) {
         const obj = JSON.parse(storedData);
@@ -182,7 +176,6 @@ const Analytics = () => {
           name: fileName,
           date: new Date().toLocaleDateString('ru-RU'),
           processed: true,
-          // Аналитические данные
           rows_affected: objects[objects.length - 1]['rows_affected'] || 0,
           total_spend_galactic:
             objects[objects.length - 1]['total_spend_galactic'] || 0,
@@ -198,7 +191,6 @@ const Analytics = () => {
         localStorage.setItem(key, JSON.stringify(obj));
       }
 
-      // Добавляем в store только после успешной обработки
       add(timestamp, {
         rows_affected: objects[objects.length - 1]['rows_affected'] || 0,
         total_spend_galactic:
@@ -211,11 +203,9 @@ const Analytics = () => {
         less_spent_at: objects[objects.length - 1]['less_spent_at'] || 0,
         big_spent_at: objects[objects.length - 1]['big_spent_at'] || 0,
       });
-      
     } catch (error) {
       setStatusBtn('error');
-      
-      // Обновляем запись в localStorage как неуспешную
+
       const storedData = localStorage.getItem(key);
       if (storedData) {
         const obj = JSON.parse(storedData);
@@ -226,15 +216,15 @@ const Analytics = () => {
         };
         localStorage.setItem(key, JSON.stringify(obj));
       }
-      
+
       console.error('Ошибка отправки:', error);
     }
   };
 
   const rest = () => {
+    setStatusBtn('pending');
     setFile(null);
     setFileName('');
-    setStatusBtn('pending');
   };
 
   const dragStartHandler = (e: React.DragEvent<HTMLDivElement>) => {
@@ -258,7 +248,7 @@ const Analytics = () => {
     <div className={style.container}>
       <AnalyticsTitle />
       <div
-        className={!drag ? backgroundClass : style.uploaderFieldTrue}
+        className={backgroundClass}
         onDragStart={e => dragStartHandler(e)}
         onDragLeave={e => dragLeaveHandler(e)}
         onDragOver={e => dragStartHandler(e)}
