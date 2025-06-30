@@ -11,9 +11,15 @@
     "format": "./node_modules/.bin/prettier --write \"src/**/*.{ts,tsx,js,jsx,json,css,md}\"",
     "format:check": "./node_modules/.bin/prettier --check \"src/**/*.{ts,tsx,js,jsx,json,css,md}\"",
     "format:fix": "./node_modules/.bin/prettier --write .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "npm run test:integration && npm run test:e2e && npm run test:unit",
+    "test:unit": "./node_modules/.bin/vitest tests/unit",
+    "test:integration": "./node_modules/.bin/playwright test tests/integration",
+    "test:e2e": "./node_modules/.bin/playwright test tests/e2e"
   },
   "dependencies": {
+    "@playwright/test": "^1.53.1",
+    "@testing-library/jest-dom": "^6.6.3",
     "classnames": "^2.5.1",
     "eslint-plugin-react-compiler": "^19.1.0-rc.2",
     "react": "^19.1.0",
@@ -24,6 +30,10 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/node": "^24.0.7",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
     "@typescript-eslint/eslint-plugin": "^8.34.1",
@@ -38,9 +48,11 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^16.0.0",
+    "jsdom": "^26.1.0",
     "prettier": "^3.5.3",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.30.1",
-    "vite": "^6.3.5"
+    "vite": "^6.3.5",
+    "vitest": "^3.2.4"
   }
 }

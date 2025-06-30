@@ -4,14 +4,16 @@ import classNames from 'classnames';
 
 type ButtonPropsType = {
   type: 'active' | 'unactive' | 'download' | 'clear';
-  children?: string;
+  children?: React.ReactNode;
   onClick?: () => void;
+  disabled?: boolean;
 };
 
 const Button: React.FC<ButtonPropsType> = ({
   type = 'unactive',
   children,
   onClick,
+  disabled = false,
 }) => {
   const btnType = classNames(
     type === 'unactive'
@@ -37,7 +39,7 @@ const Button: React.FC<ButtonPropsType> = ({
   );
   return (
     <div>
-      <button className={btnType} onClick={onClick}>
+      <button className={btnType} onClick={onClick} disabled={disabled}>
         <div className={btnTextType}>{children}</div>
       </button>
     </div>

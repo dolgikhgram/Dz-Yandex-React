@@ -1,11 +1,11 @@
 import style from './History.module.css';
 import RowHistory from './RowHistory/RowHistory.tsx';
-import Button from '../common/ButtonCollection/Button /Button.tsx';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useStore } from '../../Store/Store.tsx';
 import Modal from '../common/Portal/Portal.tsx';
 import InfoList from '../Analytics/InfoList/InfoList.tsx';
+import Button from "../common/ButtonCollection/Button/Button.tsx";
 const key = 'Analytics_Key';
 
 type HistoryItem = {

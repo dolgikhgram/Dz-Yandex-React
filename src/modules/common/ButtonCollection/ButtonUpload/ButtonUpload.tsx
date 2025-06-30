@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import style from './ButtonUpload.module.css';
 
 type ButtonUploadPropsType = {
-  type: 'pending' | 'uploaded' | 'process' | 'parsing' | 'done' | 'error';
+  type?: 'pending' | 'uploaded' | 'process' | 'parsing' | 'done' | 'error';
   children?: string;
   secondaryText?: string;
   onClick?: () => void;

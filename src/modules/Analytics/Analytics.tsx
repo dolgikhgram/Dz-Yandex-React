@@ -1,11 +1,11 @@
 import style from './Analytics.module.css';
 import AnalyticsTitle from './AnalyticsTitle/AnalyticsTitle.tsx';
 import ButtonUpload from '../common/ButtonCollection/ButtonUpload/ButtonUpload.tsx';
-import Button from '../common/ButtonCollection/Button /Button.tsx';
 import React, { type ChangeEvent, useState } from 'react';
 import classNames from 'classnames';
 import InfoList from './InfoList/InfoList.tsx';
 import { useStore } from '../../Store/Store.tsx';
+import Button from '../common/ButtonCollection/Button/Button.tsx';
 
 const key = 'Analytics_Key';
 

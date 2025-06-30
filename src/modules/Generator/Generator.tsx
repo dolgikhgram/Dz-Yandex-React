@@ -1,8 +1,8 @@
 import style from './Generator.module.css';
 import GeneratorTittle from './GeneratorTittle/GeneratorTittle.tsx';
-import Button from '../common/ButtonCollection/Button /Button.tsx';
 import React from 'react';
 import ButtonUpload from '../common/ButtonCollection/ButtonUpload/ButtonUpload.tsx';
+import Button from '../common/ButtonCollection/Button/Button.tsx';
 
 const Generator = () => {
   const [statusBtn, setStatusBtn] = React.useState<
